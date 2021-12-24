@@ -19,6 +19,7 @@ pipeline{
 	}
 	post{
 		always{
+		    archiveArtifacts artifacts: "C:\mydockerdata\output\*"
 			bat "docker-compose down"
 		}
 	}
