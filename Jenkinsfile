@@ -19,7 +19,7 @@ pipeline{
 	}
 	post{
 		always{
-		    archiveArtifacts artifacts: "C:\mydockerdata\output\*"
+		    archiveArtifacts artifacts: "C:\mydockerdata\slavejenkins\workspace\SELENIUM_RUNNER\Output"
 			bat "docker-compose down"
 		}
 	}
