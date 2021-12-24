@@ -2,8 +2,6 @@ version: "3"
 services:
   hub:
     image: selenium/hub:3.14
-    ports:
-    - "4444:4444"
   chrome:
     image: selenium/node-chrome:3.14
     shm_size: '1gb'
@@ -18,7 +16,7 @@ services:
       - hub
     environment:
       - HUB_HOST=hub
-  search-module1:
+  search-module:
     image: jadyjdjady1990/selenium-docker
     depends_on:
       - chrome
@@ -28,8 +26,8 @@ services:
       - HUB_HOST=hub
       - MODULE=search-module.xml
     volumes:
-      - c:\mydockerdata\output\search-result1:/use/share/udemy/test-output
-  book-flight-module1:
+      - c:\mydockerdata\output\search-result:/use/share/udemy/test-output
+  book-flight-module:
      image: jadyjdjady1990/selenium-docker
      depends_on:
        - chrome
@@ -39,26 +37,4 @@ services:
        - HUB_HOST=hub
        - MODULE=book-flight-module.xml
      volumes:
-       - c:\mydockerdata\output\book-result1:/use/share/udemy/test-output
-  search-module2:
-    image: jadyjdjady1990/selenium-docker
-    depends_on:
-      - chrome
-      - firefox
-    environment:
-      - BROWSER=chrome
-      - HUB_HOST=hub
-      - MODULE=search-module.xml
-    volumes:
-      - c:\mydockerdata\output\search-result2:/use/share/udemy/test-output
-  book-flight-module2:
-     image: jadyjdjady1990/selenium-docker
-     depends_on:
-       - chrome
-       - firefox
-     environment:
-       - BROWSER=firefox
-       - HUB_HOST=hub
-       - MODULE=book-flight-module.xml
-     volumes:
-       - c:\mydockerdata\output\book-result2:/use/share/udemy/test-output       
+       - c:\mydockerdata\output\book-result:/use/share/udemy/test-output
