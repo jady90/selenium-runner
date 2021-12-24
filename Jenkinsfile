@@ -19,7 +19,7 @@ pipeline{
 	}
 	post{
 		always{
-		    archiveArtifacts artifacts: 'c:/mydockerdata/slavejenkins/workspace/output/**'
+		    archiveArtifacts artifacts: 'output/**'
 			bat "docker-compose down"
 		}
 	}
